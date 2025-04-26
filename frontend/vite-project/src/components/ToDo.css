@@ -1,0 +1,40 @@
+.todo {
+  position: relative;
+  background-color: white;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.todo:hover {
+  transform: translateY(-2px);
+}
+
+.text {
+  color: var(--dark);
+  font-size: 1rem;
+}
+
+.icons {
+  display: flex;
+  gap: 1rem;
+  color: var(--gray);
+}
+
+.icon {
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: color 0.2s;
+}
+
+.icon:hover {
+  color: var(--primary);
+}
+
+.icon:last-child:hover {
+  color: var(--danger);
+}
