@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const router = require('./routes/Todo.js')
+const authRouter = require('./routes/Auth.js')
 require('dotenv').config();
 const PORT = process.env.port || 8000;
 
@@ -16,6 +17,7 @@ const PORT = process.env.port || 8000;
  .catch((err)=>console.log(err));
 
 
+ app.use('/auth', authRouter);
  app.use(router)
 
 

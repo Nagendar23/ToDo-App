@@ -1,0 +1,111 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f4f8ff; /* very light blue-white */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.auth-box {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 64, 128, 0.12);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #e6efff;
+}
+
+.auth-box h2 {
+    text-align: center;
+    color: #0a2540; /* deep blue */
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.error-message {
+    background-color: #ffecec;
+    color: #b00020;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid #ffccd5;
+    text-align: center;
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #0a2540;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #c7d9ff;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2563eb; /* blue */
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.auth-box button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #2563eb; /* solid blue */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+.auth-box button[type="submit"]:hover:not(:disabled) {
+    background: #1e4fd8;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+}
+
+.auth-box button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.switch-auth {
+    text-align: center;
+    margin-top: 22px;
+    color: #475569; /* muted blue-gray */
+    font-size: 14px;
+}
+
+.switch-btn {
+    background: none;
+    border: none;
+    color: #2563eb;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0 4px;
+    transition: color 0.2s;
+}
+
+.switch-btn:hover {
+    color: #1e4fd8;
+    text-decoration: underline;
+}

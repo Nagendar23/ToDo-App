@@ -3,17 +3,20 @@ import axios from 'axios';
 const baseUrl = 'http://localhost:8000';
 
 const getAllToDo = (setToDo) =>{
+    const userId = localStorage.getItem('userId');
     axios
-    .get(baseUrl)
+    .get(`${baseUrl}/?userId=${userId}`)
     .then(({data})=>{
         console.log('data -->',data);
         setToDo(data);
     })
+    .catch((err)=>console.log('Error fetching todos:', err))
 }
 
 const addToDo = (text,setText,setToDo)=>{
+    const userId = localStorage.getItem('userId');
     axios
-    .post(`${baseUrl}/save`,{text})
+    .post(`${baseUrl}/save`,{text, userId})
     .then((data)=>{
         console.log('Task added successfully',data);
         setText('');
@@ -23,8 +26,9 @@ const addToDo = (text,setText,setToDo)=>{
 }
 
 const updateToDo = (toDoId, text, setText, setToDo, setIsUpdating) => {
+    const userId = localStorage.getItem('userId');
     axios
-      .put(`${baseUrl}/update`, { id: toDoId, text })
+      .put(`${baseUrl}/update`, { id: toDoId, text, userId })
       .then((response) => {
         console.log("Updated successfully:", response.data);
         setText('');
@@ -37,8 +41,9 @@ const updateToDo = (toDoId, text, setText, setToDo, setIsUpdating) => {
   };
 
 const deleteToDo = (id, setToDo) => {
+  const userId = localStorage.getItem('userId');
   axios
-    .delete(`${baseUrl}/delete/`, { data: { id } })
+    .delete(`${baseUrl}/delete/`, { data: { id, userId } })
     .then((data) => {
       console.log("Deleted successfully:", data);
       getAllToDo(setToDo);

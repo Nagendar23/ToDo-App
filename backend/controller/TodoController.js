@@ -4,16 +4,27 @@ const TodoModel = require('../models/TodoModel.js');
 
 //get route 
 module.exports.getToDo = async(req,res)=>{
-    const toDo = await TodoModel.find();
+    const { userId } = req.query;
+    
+    if (!userId) {
+        return res.status(400).json({ message: 'userId is required' });
+    }
+    
+    const toDo = await TodoModel.find({ userId });
     res.send(toDo);
     console.log(toDo);
 }
 
 //save todo
 module.exports.saveToDo = async(req,res)=>{
-    const {text} = req.body;
+    const {text, userId} = req.body;
+    
+    if (!userId) {
+        return res.status(400).json({ message: 'userId is required' });
+    }
+    
     TodoModel
-    .create({text})
+    .create({text, userId})
     .then((data)=>{
         console.log("added successfully",data)
         res.status(200).send(data)
@@ -23,7 +34,12 @@ module.exports.saveToDo = async(req,res)=>{
 
 //update todo
 module.exports.updateToDo = async(req,res)=>{
-        const {id,text}= req.body
+        const {id, text, userId}= req.body
+        
+        if (!userId) {
+            return res.status(400).json({ message: 'userId is required' });
+        }
+        
         let updatedTodo =  await TodoModel.findByIdAndUpdate(id,{text},{new:true})
         .then((data)=>{
             console.log("Updated the todo successfully",data)
@@ -35,7 +51,12 @@ module.exports.updateToDo = async(req,res)=>{
 
 //delete todo 
 module.exports.deleteToDo = async(req,res)=>{
-    const {id} = req.body;
+    const {id, userId} = req.body;
+    
+    if (!userId) {
+        return res.status(400).json({ message: 'userId is required' });
+    }
+    
     await TodoModel.findByIdAndDelete(id)
     .then((data)=>{
         console.log("Deleted the todo successfully",data)
