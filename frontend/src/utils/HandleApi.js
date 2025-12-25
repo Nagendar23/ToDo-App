@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:8000';
+const baseUrl = 'https://todo-app-mgkg.onrender.com/';
 
 const getAllToDo = (setToDo) =>{
     const userId = localStorage.getItem('userId');

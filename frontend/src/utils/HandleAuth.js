@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:8000/auth';
+const baseUrl = 'https://todo-app-mgkg.onrender.com/auth';
 
 // Signup
 const signup = async (username, email, password) => {
